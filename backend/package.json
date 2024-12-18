@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "run":"nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sagolsa78/PayTm.git#main"
+  },
+  "keywords": [
+    "sahani"
+  ],
+  "author": "Mohit Sahani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sagolsa78/PayTm/issues"
+  },
+  "homepage": "https://github.com/Sagolsa78/PayTm/tree/main#readme",
+  "description": ""
+}
