@@ -21,7 +21,13 @@
   "homepage": "https://github.com/Sagolsa78/PayTm/tree/main#readme",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.2",
+    "route": "^0.2.5",
+    "router": "npm:Router@^2.1.0",
+    "Router": "^2.1.0",
     "zod": "^3.24.1"
   }
 }

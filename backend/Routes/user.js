@@ -20,7 +20,7 @@ const signupBody = zod.object({
 
 router.post("/signup", async (req, res) => {
     const success  = signupBody.safeParse(req.body)
-    console.log(!success.success);
+    
 
     if (!success) {
         return res.status(411).json({
@@ -170,6 +170,7 @@ router.put("/update", authMiddleware, async (req, res) => {
 
         // Update User Data
         const result = await User.updateOne({ _id: userId }, { $set: updateData });
+        console.log("middleware check:",authMiddleware)
         
         // Check if the user was found and updated
         if (result.matchedCount === 0) {
