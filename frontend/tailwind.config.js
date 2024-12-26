@@ -3,9 +3,15 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@headlessui/react/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      color:{
+        "custom-blue":"#002E6E",
+
+      }
+    },
   },
   plugins: [],
 }

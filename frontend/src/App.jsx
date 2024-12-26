@@ -1,10 +1,10 @@
 import {React, lazy,Suspense} from "react";
 import { BrowserRouter,Route,Routes } from "react-router-dom";
 
-const Signup =lazy(()=>import ("./components/Signup"))
-const Signin =lazy(()=>import ("./components/Signin"))
-const Dashboard=lazy(()=>import ("./components/Dashboard"))
-const Transfer=lazy(()=>import("./components/Transfer"))
+const Signup =lazy(()=>import ("./pages/Signup"))
+const Signin =lazy(()=>import ("./pages/Signin"))
+const Dashboard=lazy(()=>import ("./pages/Dashboard"))
+const Transfer=lazy(()=>import("./pages/Transfer"))
 
 
 
