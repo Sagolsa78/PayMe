@@ -6,7 +6,7 @@ function AppBar() {
     return (
         <div>
             <div>
-                <div className="flex sticky top-0 right-0 z-50 items-center justify-between  px-2 py-2 bg-blue-800">
+                <div className="flex sticky top-0 right-0 z-50 items-center justify-between  px-2 py-2 bg-blue-500">
                     <div className="p-2 items-center w-28 ml-2 ">
                         <img className="" src="src/assets/Paytm_logo.png" alt="paytm_logo" />
                     </div>

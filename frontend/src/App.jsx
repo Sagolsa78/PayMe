@@ -5,6 +5,7 @@ const Signup =lazy(()=>import ("./pages/Signup"))
 const Signin =lazy(()=>import ("./pages/Signin"))
 const Dashboard=lazy(()=>import ("./pages/Dashboard"))
 const Transfer=lazy(()=>import("./pages/Transfer"))
+const Homepage=lazy(()=>import("./pages/Homepage"))
 
 
 
@@ -20,6 +21,7 @@ function App(){
         <Route path="/signin" element={<Signin/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/transfer" element={<Transfer/>}/>
+        <Route path="/" element={<Homepage/>}/>
       </Routes>
 
       </Suspense>

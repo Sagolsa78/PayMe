@@ -31,7 +31,7 @@ function Signup() {
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); 
     setIsLoading(true);
     await apicall();
     setIsLoading(false);
