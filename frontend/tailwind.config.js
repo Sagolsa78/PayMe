@@ -5,13 +5,26 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@headlessui/react/**/*.{js,ts,jsx,tsx}",
   ],
-  theme: {
-    extend: {
-      color:{
-        "custom-blue":"#002E6E",
 
-      }
-    },
-  },
   plugins: [],
+  
+    "files": [],
+    "references": [
+      {
+        "path": "./tsconfig.app.json"
+      },
+      {
+        "path": "./tsconfig.node.json"
+      }
+    ],
+      "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+          "@/*": ["./src/*"]
+        }
+      }
+    
+    
+  
+  
 }

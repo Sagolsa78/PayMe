@@ -1,6 +1,5 @@
 import React from "react";
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+
 import { Search, User, ShoppingCart } from "lucide-react"
 
 function Header(){
@@ -23,7 +22,7 @@ function Header(){
                 </nav>
                 <div className="flex items-center space-x-4">
                     <div className="relative hidden md:block">
-                        <Input type="search" placeholder="Search..." className="pl-10"></Input>
+                        <input type="search" placeholder="Search..." className="pl-10"></input>
 
                         <Search className="absolute left-3 top-1/2 transform-translate-y-1/2 text-gray-400" size={18}></Search>
 
@@ -31,9 +30,9 @@ function Header(){
                     <button variant="ghost " size="icon">
                         <User size={20}/>
                     </button>
-                    <Button varient="ghost" size="icon">
+                    <button varient="ghost" size="icon">
                         <ShoppingCart size={20}/>
-                    </Button>
+                    </button>
 
                 </div>
 
