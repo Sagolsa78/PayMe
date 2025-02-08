@@ -51,7 +51,7 @@ function Signin() {
             >
               <img
                 className="mx-auto w-32 mb-6"
-                src="/src/assets/Paytm-Logo.wine.svg"
+                src="/src/assets/Paytm_logo.png"
                 alt="Company Logo"
               />
               <h1 className="text-3xl font-bold text-white mb-2">Welcome</h1>

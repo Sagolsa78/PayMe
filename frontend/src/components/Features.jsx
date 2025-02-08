@@ -14,11 +14,11 @@ export default function Features() {
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-10 md:mb-0">
           <img
-            src="/Paytm_Logo.jpeg"
-            width={600}
-            height={400}
+            src="/src/assets/paytm_service.avif"
+            width={500}
+            height={300}
             alt="Paytm Features"
-            className="rounded-lg shadow-lg"
+            className="rounded-lg p-2 shadow-lg"
           />
         </div>
         <div className="md:w-1/2 md:pl-12">

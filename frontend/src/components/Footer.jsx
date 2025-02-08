@@ -105,7 +105,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="mt-12 pt-8 border-t  border-gray-700 text-center">
-                    <p>&copy;{new Date().getFullYear()} Paytm. Allrights reserved.</p>
+                    <p>&copy;{new Date().getFullYear()} Paytm Clone. Allrights reserved.</p>
                 </div>
             </div>
         </footer>

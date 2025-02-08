@@ -20,7 +20,7 @@ const router = express.Router();
 // });
 
 router.get("/balance", authMiddleware, async function (req, res) {
-    console.log(authMiddleware);
+    
 
     try {
         const account = await Account.findOne({

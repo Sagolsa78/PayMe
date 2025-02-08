@@ -25,6 +25,8 @@
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.2",
+    "node": "^23.7.0",
+    "nodemon": "^3.1.9",
     "route": "^0.2.5",
     "router": "npm:Router@^2.1.0",
     "Router": "^2.1.0",

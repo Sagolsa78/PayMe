@@ -1,5 +1,6 @@
 import React from "react"
 
+
 const DownloadApp = () => {
   return (
     <section className="py-20 bg-blue-600 text-white">
@@ -23,7 +24,7 @@ const DownloadApp = () => {
           </div>
         </div>
         <div className="md:w-1/2">
-          <img src="/assets/paytm_logo.png" alt="Paytm App" className="mx-auto" />
+          <img src="/src/assets/paytm_download_image .avif"  alt="Paytm App" className="mx-auto size-96" />
         </div>
       </div>
     </section>

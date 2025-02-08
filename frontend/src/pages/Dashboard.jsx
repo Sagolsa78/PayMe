@@ -2,7 +2,9 @@ import React from "react";
 import AppBar from "../components/Appbar";
 import Balance from "../components/Balance";
 
-import TransactionHistory from "../components/TransactionHistory";
+import { Users } from "../components/Users";
+
+
 
 function Dashboard(){
     return (
@@ -12,7 +14,7 @@ function Dashboard(){
             </div>
             <div>
                 <Balance/>
-                <TransactionHistory/>
+                <Users/>
             </div>
         </div>
     )
