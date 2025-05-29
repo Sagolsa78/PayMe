@@ -3,8 +3,7 @@
 A full-stack clone of PayTm’s basic wallet functionality built using the MERN stack. This app allows users to register, log in, view wallet balances, search for other users, and transfer funds securely—all within a clean and responsive UI.
 
 ## 🚀 Demo
-<Screenshot from 2025-05-29 20-20-50.png>
-
+![App Screenshot](<frontend/public/Screenshot from 2025-05-29 20-20-50.png>)
 
 
 ## 🔥 Features
