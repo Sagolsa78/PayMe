@@ -2,7 +2,9 @@
 const mongoose =require("mongoose");
 
 
-mongoose.connect("mongodb+srv://sahanimohit5ed:w9oYbCgdKeUSdrpp@cluster03.ckuqs.mongodb.net/?retryWrites=true&w=majority&appName=Cluster03/AppData");
+mongoose.connect("mongodb+srv://sahanimohit5ed:tHEFHOl9pghDIPek@cluster03.ckuqs.mongodb.net/PayTm_App")
+.then(()=>console.log("Db Connected"));
+
 
 const userSchema= new mongoose.Schema({
     username:{
