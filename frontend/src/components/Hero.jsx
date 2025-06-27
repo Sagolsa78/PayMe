@@ -18,7 +18,7 @@ function Hero(){
                 </button>
                 </div>
                 <div className="md:w-1/2">
-                <img src="/src/assets/paytm_hero.avif" alt="Paytm app" width={500} height={500} className="rounded-lg " />
+                <img src="/paytm_hero.avif" alt="Paytm app" width={500} height={500} className="rounded-lg " />
 
                 </div>
             </div>

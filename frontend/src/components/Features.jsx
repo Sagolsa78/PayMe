@@ -14,7 +14,7 @@ export default function Features() {
       <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
         <div className="md:w-1/2 mb-10 md:mb-0">
           <img
-            src="/src/assets/paytm_service.avif"
+            src="/paytm_service.avif"
             width={500}
             height={300}
             alt="Paytm Features"
