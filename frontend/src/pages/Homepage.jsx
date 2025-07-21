@@ -1,26 +1,27 @@
-import React from "react";
-import Header from "../components/Header";
-import Hero from "../components/Hero";
-import ServiceCard from "../components/ServiceCard";
-import Features from "../components/Features";
-import DownloadApp from "../components/DownloadApp";
-import Footer from "../components/Footer";
+import React from 'react';
+import { ThemeProvider } from '../contex/ThemeProvider';
+import Navbar from '../components/Navbar';
+import Hero from '../components/Hero';
+import Services from '../components/Service';
 
+import Testimonials from '../components/Testimonials';
+import PromoBanner from '../components/Promo';
+import Footer from '../components/Footer';
 
-
-function Homepage(){
-    return <div className="flex flex-col min-h-screen">
-        <Header/>
-        <div className="flex-grow">
-            <Hero/>
-            <ServiceCard/>
-            <Features/>
-            <DownloadApp/>
-        </div>
-        <Footer/>
-    </div>
+function App() {
+  return (
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+        <Navbar />
+        <Hero />
+        <Services />
+      
+        <Testimonials />
+        <PromoBanner />
+        <Footer />
+      </div>
+    </ThemeProvider>
+  );
 }
 
-
-export default Homepage;
-
+export default App;

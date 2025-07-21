@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "run": "nodemon index.js"
+    "start": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -22,11 +22,13 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^17.2.0",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.9.2",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.16.2",
     "node": "^23.11.0",
-    "nodemon": "^3.1.9",
+    "nodemon": "^3.1.10",
     "route": "^0.2.5",
     "router": "npm:Router@^2.1.0",
     "Router": "^2.1.0",

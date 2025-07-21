@@ -1,9 +1,12 @@
 
 const mongoose =require("mongoose");
+const dotenv =require("dotenv");
 
+dotenv.config();
 
-mongoose.connect("mongodb+srv://sahanimohit5ed:tHEFHOl9pghDIPek@cluster03.ckuqs.mongodb.net/PayTm_App")
+mongoose.connect(process.env.MONGO_URI)
 .then(()=>console.log("Db Connected"));
+
 
 
 const userSchema= new mongoose.Schema({
@@ -56,11 +59,52 @@ const accountSchema=new mongoose.Schema({
 
 })
 
+
+const transactionSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true // User performing the transaction
+  },
+  type: {
+    type: String,
+    required: true // e.g., "UPI Transfer", "Electricity Bill"
+  },
+  amount: {
+    type: Number,
+    required: true
+  },
+  note: {
+    type: String
+  },
+  status: {
+    type: String,
+    enum: ["completed", "pending", "failed"],
+    default: "completed"
+  },
+  recipient: {
+    type: String,
+    required: true // e.g., "Rahul Sharma" or "MSEB Maharashtra"
+  },
+  time: {
+    type: String,
+    required: true // human-readable like "2 hours ago"
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+const Transactions= mongoose.model("Transaction", transactionSchema);
+
+
 const User=mongoose.model("User",userSchema);
 const Account=mongoose.model("Account",accountSchema);
 
 
 module.exports={
     User,
-    Account
+    Account,
+    Transactions,
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import AppBar from "../components/Appbar";
+import AppBar from "../";
 import Balance from "../components/Balance";
 
 import { Users } from "../components/Users";
