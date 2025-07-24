@@ -122,7 +122,7 @@ router.get("/transactions", authMiddleware, async (req, res) => {
 
 
 
-    const transactions = await Transactions.find({ $or: [{ userId: userId }, { recipient: userId }] }).populate("userId", "firstname")
+    const transactions = await Transactions.find({ $or: [{ userId: userId }] }).populate("userId", "firstname")
       .populate("recipient", "firstname")
       .sort({ timestamp: -1 })
       .lean();

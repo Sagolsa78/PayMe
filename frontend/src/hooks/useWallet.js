@@ -8,7 +8,7 @@ export const useWallet = () => {
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [userId, setUserId] = useState([]);
+  const [userId, setUserId] = useState("");
   const [userInfo,setUserInfo]=useState({firstname:"" ,lastname:""});
 
 

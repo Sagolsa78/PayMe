@@ -12,7 +12,7 @@ import {
   Search
 } from 'lucide-react';
 
-const TransactionHistory = ({ transactions, loading }) => {
+const TransactionHistory = ({ userId, transactions, loading }) => {
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -34,9 +34,11 @@ const TransactionHistory = ({ transactions, loading }) => {
 
 
 
-  const isFirstTransaction = transactions.length === 1;
-  const firstTransaction = transactions[transactions.length - 1];
-  const restTransactions = transactions.slice(0, -1);
+
+const sortedTransactions = [...transactions].sort((a, b) => new Date(b.time) - new Date(a.time));
+const isFirstTransaction = sortedTransactions.length === 1;
+const firstTransaction = sortedTransactions[0]; 
+const restTransactions = sortedTransactions.slice(1);
 
   const filteredRest = restTransactions.filter(transaction => {
     if (!transaction || typeof transaction !== 'object') return false;
@@ -89,7 +91,7 @@ const TransactionHistory = ({ transactions, loading }) => {
     );
   }
 
-// console.log("hello",transactions)
+  // console.log("hello",transactions)
 
   return (
     <motion.div
@@ -137,9 +139,27 @@ const TransactionHistory = ({ transactions, loading }) => {
         {filteredTransactions.length > 0 ? (
           filteredTransactions.map((transaction, index) => {
             if (!transaction) return null;
-            const Icon = getTransactionIcon(transaction.type);
             const isPositive = transaction.amount > 0;
+            const isSent = transaction.type.toLowerCase().includes("sent");
+            const isReceived = transaction.type.toLowerCase().includes("received");
 
+            const Icon = getTransactionIcon(transaction.type);
+            let displayName = "unknown";
+
+            if (isSent && transaction.recipient?.firstname) {
+              displayName = transaction.recipient.firstname;
+            } else if (isReceived && transaction.recipient?.firstname) {
+              displayName = transaction.recipient.firstname;
+            }
+
+            const displayLabel = isSent
+              ? `To: ${displayName}`
+              : isReceived
+                ? `From: ${displayName}`
+                : "Unknown Direction";
+
+
+                
             return (
               <motion.div
                 key={transaction._id}
@@ -161,15 +181,16 @@ const TransactionHistory = ({ transactions, loading }) => {
                   </div>
 
                   {/* Transaction Details */}
-                  
+
                   <div>
                     <h4 className="font-medium text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                       {transaction.type}
 
                     </h4>
                     <p className="text-sm text-gray-600 dark:text-gray-300">
-                      {transaction.userId?.firstname ??"unknown user"} • {transaction.time}
+                      {displayLabel} • {transaction.time}
                     </p>
+
                     {transaction.note && (
                       <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
                         "{transaction.note}"
