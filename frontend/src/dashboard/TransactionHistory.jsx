@@ -12,7 +12,7 @@ import {
   Search
 } from 'lucide-react';
 
-const TransactionHistory = ({ userId, transactions, loading }) => {
+const TransactionHistory = ({  transactions, loading }) => {
   const [filter, setFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 

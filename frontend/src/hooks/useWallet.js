@@ -22,7 +22,7 @@ export const useWallet = () => {
         return;
       }
 
-      const response = await axios.get("http://localhost:3000/api/v1/account/balance", {
+      const response = await axios.get("https://paytm-mdcy.onrender.com/api/v1/account/balance", {
         headers: {
           Authorization: `Bearer ${usertoken}`
         }
@@ -52,7 +52,7 @@ export const useWallet = () => {
         return;
       }
 
-      const newTransactions = await axios.get(`http://localhost:3000/api/v1/account/transactions`, {
+      const newTransactions = await axios.get(`https://paytm-mdcy.onrender.com/api/v1/account/transactions`, {
         headers: {
           Authorization: `Bearer ${usertoken}`
         }
@@ -83,7 +83,7 @@ export const useWallet = () => {
 
     try {
       const usertoken = localStorage.getItem('token')
-      const transaction = await axios.post("http://localhost:3000/api/v1/account/transfer",
+      const transaction = await axios.post("https://paytm-mdcy.onrender.com/api/v1/account/transfer",
         {
           to: recipientId,
           amount: amount,
@@ -114,7 +114,7 @@ export const useWallet = () => {
 
   const searchUsers = useCallback(async (query) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/v1/user/bulk?filter=${query}`);
+      const response = await axios.get(`https://paytm-mdcy.onrender.com/api/v1/user/bulk?filter=${query}`);
       return response.data.user;
 
 
