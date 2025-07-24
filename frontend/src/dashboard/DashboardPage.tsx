@@ -28,7 +28,7 @@ const DashboardPage = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const Navigate = useNavigate();
   const { isDark, toggleTheme } = useTheme();
-  const { balance, transactions, loading, refreshing, refreshData, sendMoney, searchUsers } = useWallet();
+  const { balance, userInfo,transactions, loading, refreshing, refreshData, sendMoney, searchUsers } = useWallet();
 
   const quickActions = [
     { icon: Send, label: 'Send Money', color: 'from-blue-500 to-blue-600', action: () => setShowSendModal(true) },
@@ -36,6 +36,12 @@ const DashboardPage = () => {
     { icon: Smartphone, label: 'Recharge', color: 'from-purple-500 to-purple-600', action: () => { } },
     { icon: Zap, label: 'Pay Bills', color: 'from-orange-500 to-orange-600', action: () => { } }
   ];
+
+
+  const capitalize=(str)=>
+    str ? str.charAt(0).toUpperCase()+ str.slice(1).toLowerCase():"";
+
+
 
   const handleUserSelect = (user) => {
     setSelectedUser(user);
@@ -176,7 +182,7 @@ const DashboardPage = () => {
                   <button
                     onClick={() => {
                       localStorage.removeItem("token");
-                      window.location.href = '/login';
+                      window.location.href = '/signin';
                     }}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                   >
@@ -201,7 +207,7 @@ const DashboardPage = () => {
             >
               <div>
                 <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                  Welcome back! 👋 {}
+                  Welcome back{userInfo.firstname ||userInfo.lastname?`, ${capitalize(userInfo.firstname)} ${capitalize(userInfo.lastname)}`:""}!👋
                 </h1>
                 <p className="text-gray-600 dark:text-gray-300">
                   Your wallet is ready for seamless transactions

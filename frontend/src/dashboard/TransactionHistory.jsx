@@ -33,22 +33,7 @@ const TransactionHistory = ({ transactions, loading }) => {
   };
 
 
-  //   const filteredTransactions = transactions.filter(transaction => {
-  //   const matchesFilter =
-  //     filter === 'all' ||
-  //     (filter === 'sent' && transaction.amount < 0) ||
-  //     (filter === 'received' && transaction.amount > 0) ||
-  //     (filter === 'bills' &&
-  //       (transaction.type?.includes('Bill') || transaction.type?.includes('Recharge')));
 
-  //   const matchesSearch =
-  //     (transaction.recipient?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
-  //     (transaction.type?.toLowerCase() || '').includes(searchTerm.toLowerCase());
-
-  //   return matchesFilter && matchesSearch;
-
-
-  // });\
   const isFirstTransaction = transactions.length === 1;
   const firstTransaction = transactions[transactions.length - 1];
   const restTransactions = transactions.slice(0, -1);
@@ -64,7 +49,7 @@ const TransactionHistory = ({ transactions, loading }) => {
         (transaction.type?.toLowerCase().includes('bill') || transaction.type?.toLowerCase().includes('recharge')));
 
     const matchesSearch =
-      (transaction.recipient?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
+      (transaction.recipient.firstname?.toLowerCase() || '').includes(searchTerm.toLowerCase()) ||
       (transaction.type?.toLowerCase() || '').includes(searchTerm.toLowerCase());
 
     return matchesFilter && matchesSearch;
@@ -152,7 +137,7 @@ const TransactionHistory = ({ transactions, loading }) => {
         {filteredTransactions.length > 0 ? (
           filteredTransactions.map((transaction, index) => {
             if (!transaction) return null;
-            const Icon = getTransactionIcon(transaction.type || '');
+            const Icon = getTransactionIcon(transaction.type);
             const isPositive = transaction.amount > 0;
 
             return (

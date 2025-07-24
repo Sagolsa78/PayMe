@@ -9,6 +9,8 @@ export const useWallet = () => {
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [userId, setUserId] = useState([]);
+  const [userInfo,setUserInfo]=useState({firstname:"" ,lastname:""});
+
 
 
   const fetchBalance = useCallback(async () => {
@@ -29,7 +31,11 @@ export const useWallet = () => {
 
       setBalance(response.data.balance);
       setUserId(response.data.userId)
-      console.log(response.data.userId);
+      setUserInfo({
+        firstname:response.data.firstname,
+        lastname:response.data.lastname
+      })
+    
       toast.success("Balance Updated");
     } catch (error) {
       console.error('Error fetching balance:', error);
@@ -52,7 +58,7 @@ export const useWallet = () => {
         }
       })
       setTransactions(newTransactions.data.transactions);
-      // console.log("useris", newTransactions);
+      console.log("useris", newTransactions.data.transactions);
 
 
     } catch (error) {
@@ -80,7 +86,8 @@ export const useWallet = () => {
       const transaction = await axios.post("http://localhost:3000/api/v1/account/transfer",
         {
           to: recipientId,
-          amount: amount
+          amount: amount,
+          
         },
         {
           headers: {
@@ -91,14 +98,11 @@ export const useWallet = () => {
 
       // Update balance
       fetchBalance();
+      //update transction
+      fetchTransactions();
 
 
-      // Add transaction to history
-      setTransactions(prev => [transaction.data.transaction, ...prev]);
-
-
-
-
+      toast.success("transaction successfull");
 
       return transaction;
 
@@ -121,16 +125,21 @@ export const useWallet = () => {
       return [];
     }
   }, []);
+useEffect(() => {
+  let mounted = false;
 
-  useEffect(() => {
-    const loadInitialData = async () => {
+  const loadInitialData = async () => {
+    if (!mounted) {
+      mounted = true;
       setLoading(true);
       await Promise.all([fetchBalance(), fetchTransactions()]);
       setLoading(false);
-    };
+    }
+  };
 
-    loadInitialData();
-  }, [fetchBalance, fetchTransactions]);
+  loadInitialData();
+}, []);
+
 
   // // // Auto-refresh balance every transaction
   // useEffect(() => {
@@ -141,6 +150,7 @@ export const useWallet = () => {
   return {
     balance,
     userId,
+    userInfo,
     transactions,
     loading,
     refreshing,

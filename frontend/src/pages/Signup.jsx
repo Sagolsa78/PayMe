@@ -18,6 +18,7 @@ import {
 import { Link, useNavigate } from 'react-router-dom';
 import { useTheme } from '../contex/ThemeProvider';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function Signup (){ 
   const [showPassword, setShowPassword] = useState(false);
@@ -57,12 +58,12 @@ function Signup (){
     },}
   );
       localStorage.setItem("token", response.data.token);
-      alert("Signup successful");
+      toast.success("Signup successful");
       navigate('/signin')
     } catch (error) {
       console.log(error)
       console.error("Error while signing up:", error.message);
-      alert("Failed to sign up. Please try again.");
+      toast.error("Failed to sign up. Please try again.");
     }
     console.log('Signup attempt:', formData);
   };

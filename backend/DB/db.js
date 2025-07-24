@@ -83,8 +83,9 @@ const transactionSchema = new mongoose.Schema({
     default: "completed"
   },
   recipient: {
-    type: String,
-    required: true // e.g., "Rahul Sharma" or "MSEB Maharashtra"
+    type: mongoose.Schema.Types.ObjectId,
+    required: true, // e.g., "Rahul Sharma" or "MSEB Maharashtra",
+    ref:"User",
   },
   time: {
     type: String,

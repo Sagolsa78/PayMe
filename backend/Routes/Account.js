@@ -15,20 +15,20 @@ router.get("/balance", authMiddleware, async function (req, res) {
     const userId = req.user._id;
     const account = await Account.findOne({
       userId: userId
-    }).populate("userId","firstname lastname");
-    
+    }).populate("userId", "firstname lastname");
 
- 
+
+
     return res.json({
       userId: userId,
       balance: account.balance,
-      firstname:account.userId.firstname,
-      lastname:account.userId.lastname
+      firstname: account.userId.firstname,
+      lastname: account.userId.lastname
 
 
     })
-   
-    
+
+
   }
   catch (err) {
     return res.json({
@@ -62,7 +62,7 @@ router.post("/transfer", authMiddleware, async function (req, res) {
     if (!toAccount) {
       await session.abortTransaction();
       return res.status(400).json({
-        msg: 'invalid account'
+        msg: 'invalid recipient account'
       })
     }
 
@@ -70,22 +70,25 @@ router.post("/transfer", authMiddleware, async function (req, res) {
     await Account.updateOne({ userId: to }, { $inc: { balance: amount } }).session(session);
 
 
+
     // Save transaction for sender
-    await Transactions.create([{
-      userId: toAccount.userId,
+    const SenderTransactions = await Transactions.create([{
+      userId,
       type: "Money Sent",
-      amount,
-      recipient: userId.toString(),
+      amount: -amount,
+      recipient: toAccount.userId,
       status: "completed",
       time: new Date().toLocaleString()
     }], { session });
 
+
+
     // Save transaction for receiver
-    await Transactions.create([{
-      userId: toAccount,
+    const ReciversTransaction = await Transactions.create([{
+      userId: toAccount.userId,
       type: "Money Received",
       amount: amount,
-      recipient: fromAccount.userId.toString(),
+      recipient: fromAccount.userId,
       status: "completed",
       time: new Date().toLocaleString()
     }], { session });
@@ -95,9 +98,8 @@ router.post("/transfer", authMiddleware, async function (req, res) {
     res.status(200).json({
       msg: 'transfer successfully',
       Amount: amount,
-      transaction:{
-        userId
-      }
+      transaction: SenderTransactions[0],
+      //transaction: ReciversTransaction[0],
 
 
 
@@ -115,7 +117,13 @@ router.post("/transfer", authMiddleware, async function (req, res) {
 router.get("/transactions", authMiddleware, async (req, res) => {
   try {
     const userId = req.user._id
-    const transactions = await Transactions.find({ userId: userId }).populate("userId", "firstname")
+   
+    console.log("user",userId);
+
+
+
+    const transactions = await Transactions.find({ $or: [{ userId: userId }, { recipient: userId }] }).populate("userId", "firstname")
+      .populate("recipient", "firstname")
       .sort({ timestamp: -1 })
       .lean();
 

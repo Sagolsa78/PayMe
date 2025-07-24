@@ -44,16 +44,15 @@ const LoginPage = () => {
       });
       if (response.status === 200 && response.data.token) {
         localStorage.setItem("token", response.data.token);
-        alert("Login successful");
-        toast.success("Login successfull")
+        toast.success("Login successfull");
         navigate('/dashboard');
       } else {
-        alert("Invalid Login Credentials,Please try again")
+        toast.error("Invalid Login Credentials,Please try again")
       }
     } catch (error) {
       console.log(error)
       console.error("Error while Loging in:", error);
-      alert("Failed to sign in. Please try again.");
+      toast.error("Failed to sign in. Please try again.");
     }
     console.log('Signup attempt:', formData);
 
