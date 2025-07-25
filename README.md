@@ -2,9 +2,11 @@
 
 A modern, secure, and feature-rich digital payment platform built with Next.js 14, TypeScript, and Tailwind CSS. PayMe offers comprehensive wallet management, real-time transactions, and enterprise-grade security features.
 
-
+HomePage
 ![HomePage](/frontend/public/HomePage.png)
 
+
+DashBoardPage
 ![PayMe Dashboard](/frontend/public/DashBoard.png)
 
 
@@ -65,7 +67,8 @@ A modern, secure, and feature-rich digital payment platform built with Next.js 1
 
 1. **Clone the repository**
    \`\`\`bash
-   git clone https://github.com/yourusername/PayMe.git
+   git clone https://github.com/sagolsa78/PayMe.git
+   
    cd payme-app
    \`\`\`
 
