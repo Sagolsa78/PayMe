@@ -9,6 +9,9 @@ const Hero = () => {
 
   useEffect(() => {
     axios.get('https://paytm-mdcy.onrender.com/api/v1/user/ping')
+    .then(response=>{
+      console.log("Ping successfully",response.data)
+    })
       .catch((err) => console.log('Backend wake-up failed:', err));
   }, []);
 
