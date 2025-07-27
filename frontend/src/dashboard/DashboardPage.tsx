@@ -133,7 +133,7 @@ const DashboardPage = () => {
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {
                   localStorage.removeItem("token");
-                  window.location.href = '/signin';
+                  Navigate( '/signin');
                 }}
                 className="p-2 text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
               >
@@ -182,7 +182,7 @@ const DashboardPage = () => {
                   <button
                     onClick={() => {
                       localStorage.removeItem("token");
-                      window.location.href = '/signin';
+                      Navigate('/signin');
                     }}
                     className="p-2 text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
                   >
