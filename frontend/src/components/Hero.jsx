@@ -5,9 +5,9 @@ import { useNavigate,useEffect } from 'react-router-dom';
 
 const Hero = () => {
   const navigate = useNavigate();
-  
+
   useEffect(() => {
-    fetch('https://https://paytm-mdcy.onrender.com/api/v1/user/ping')
+    fetch('https://paytm-mdcy.onrender.com/api/v1/user/ping')
       .catch((err) => console.log('Backend wake-up failed:', err));
   }, []);
 
