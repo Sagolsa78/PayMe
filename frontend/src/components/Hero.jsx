@@ -1,10 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play, Shield, Zap, Users } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useEffect } from 'react-router-dom';
 
 const Hero = () => {
   const navigate = useNavigate();
+  
   useEffect(() => {
     fetch('https://https://paytm-mdcy.onrender.com/api/v1/user/ping')
       .catch((err) => console.log('Backend wake-up failed:', err));
