@@ -10,6 +10,11 @@ const { authMiddleware } = require("../middleware/authmiddleware");
 
 
 
+
+router.get('/ping', (req, res) => {
+  res.status(200).send('pong');
+});
+
 const signupBody = zod.object({
     username: zod.string().email(),
     firstname: zod.string(),

@@ -4,8 +4,12 @@ import { ArrowRight, Play, Shield, Zap, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
-  const navigate=useNavigate();
-  
+  const navigate = useNavigate();
+  useEffect(() => {
+    fetch('https://https://paytm-mdcy.onrender.com/api/v1/user/ping')
+      .catch((err) => console.log('Backend wake-up failed:', err));
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-blue-900/20 dark:to-indigo-900/20">
       {/* Animated Background Elements */}
@@ -76,7 +80,7 @@ const Hero = () => {
             transition={{ delay: 0.4 }}
             className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
           >
-            Recharge, Pay Bills, Send Money – Anytime, Anywhere. Experience seamless 
+            Recharge, Pay Bills, Send Money – Anytime, Anywhere. Experience seamless
             transactions with industry-leading security and real-time processing.
           </motion.p>
 
@@ -90,7 +94,7 @@ const Hero = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              onClick={()=>{navigate("/signup")}}
+              onClick={() => { navigate("/signup") }}
               className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all font-semibold text-lg shadow-lg hover:shadow-xl"
             >
               Get Started
